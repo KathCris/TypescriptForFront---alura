@@ -1,18 +1,20 @@
 
 const balanceValue = 3000
 
-const moneyValue = document.querySelector('.saldo-valor .valor');
+const moneyValue = document.querySelector('.saldo-valor .valor') as HTMLSpanElement;
 
-const formTransaction = document.querySelector('.block-nova-transacao form');
+const formTransaction = document.querySelector('.block-nova-transacao form') as HTMLFormElement;
 
-moneyValue.textContent = balanceValue
+if (moneyValue) {
+    moneyValue.textContent = balanceValue.toString()
+}
 
-formTransaction.addEventListener('submit', function(event) {
+formTransaction.addEventListener ('submit', function(event)  {
     event.preventDefault();
 
-    const inputTypeFormTransaction = formTransaction.querySelector("#tipoTransacao")
-    const inputValueFormTransaction = formTransaction.querySelector("#valor")
-    const inputDateFormTransaction = formTransaction.querySelector("#data")
+    const inputTypeFormTransaction = formTransaction.querySelector("#tipoTransacao") as HTMLSelectElement;
+    const inputValueFormTransaction = formTransaction.querySelector("#valor") as HTMLInputElement;
+    const inputDateFormTransaction = formTransaction.querySelector("#data") as HTMLInputElement;
     
     if(!inputTypeFormTransaction.value || !inputValueFormTransaction.value || !inputDateFormTransaction.value) {
         alert('preencha todos os campos obrigatorios!');
@@ -39,7 +41,7 @@ formTransaction.addEventListener('submit', function(event) {
     }
 
     
-    moneyValue.textContent = valueBalance
+    moneyValue.textContent = valueBalance.toString()
 
     formTransaction.reset();
 })
