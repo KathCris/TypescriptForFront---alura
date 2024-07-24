@@ -1,7 +1,16 @@
-import { TypeTransaction } from "./TypeTransaction";
+// import { Transaction, TypeTransaction } from "./TypeTransaction";
+// import { moneyValue } from "./balanceComponent";
+//Enum
+var TypeTransaction;
+(function (TypeTransaction) {
+    TypeTransaction["DEPOSITO"] = "Dep\u00F3sito";
+    TypeTransaction["TRANSFERENCIA"] = "Transfer\u00EAncia";
+    TypeTransaction["PAGAMENTO_BOLETO"] = "Pagamento de Boleto";
+})(TypeTransaction || (TypeTransaction = {}));
 const formTransaction = document.querySelector('.block-nova-transacao form');
 formTransaction.addEventListener('submit', function (event) {
     event.preventDefault();
+    const moneyValue = document.querySelector('.saldo-valor .valor');
     const inputTypeFormTransaction = formTransaction.querySelector("#tipoTransacao");
     const inputValueFormTransaction = formTransaction.querySelector("#valor");
     const inputDateFormTransaction = formTransaction.querySelector("#data");

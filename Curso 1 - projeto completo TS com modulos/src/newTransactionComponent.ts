@@ -1,10 +1,27 @@
-import { Transaction, TypeTransaction } from "./TypeTransaction";
+// import { Transaction, TypeTransaction } from "./TypeTransaction";
+// import { moneyValue } from "./balanceComponent";
 
+interface Transaction {
+    typeTransaction: TypeTransaction,
+    valueTransaction: Number,
+    dateTransaction: Date
+  }
+  
+  //Enum
+enum TypeTransaction {
+    DEPOSITO = "Depósito",
+    TRANSFERENCIA = "Transferência",
+    PAGAMENTO_BOLETO = "Pagamento de Boleto"
+  }
+
+  
 
 const formTransaction = document.querySelector('.block-nova-transacao form') as HTMLFormElement;
 
 formTransaction.addEventListener('submit', function(event) {
   event.preventDefault();
+
+  const moneyValue = document.querySelector('.saldo-valor .valor') as HTMLElement;
 
   const inputTypeFormTransaction = formTransaction.querySelector("#tipoTransacao") as HTMLSelectElement;
   const inputValueFormTransaction = formTransaction.querySelector("#valor") as HTMLInputElement;
