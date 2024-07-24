@@ -1,28 +1,19 @@
-// import { Transaction, TypeTransaction } from "./TypeTransaction";
-// import { moneyValue } from "./balanceComponent";
-//Enum
-var TypeTransaction;
-(function (TypeTransaction) {
-    TypeTransaction["DEPOSITO"] = "Dep\u00F3sito";
-    TypeTransaction["TRANSFERENCIA"] = "Transfer\u00EAncia";
-    TypeTransaction["PAGAMENTO_BOLETO"] = "Pagamento de Boleto";
-})(TypeTransaction || (TypeTransaction = {}));
 const formTransaction = document.querySelector('.block-nova-transacao form');
+const inputTypeFormTransaction = formTransaction.querySelector("#tipoTransacao");
+const inputValueFormTransaction = formTransaction.querySelector("#valor");
+const inputDateFormTransaction = formTransaction.querySelector("#data");
 formTransaction.addEventListener('submit', function (event) {
     event.preventDefault();
-    const moneyValue = document.querySelector('.saldo-valor .valor');
-    const inputTypeFormTransaction = formTransaction.querySelector("#tipoTransacao");
-    const inputValueFormTransaction = formTransaction.querySelector("#valor");
-    const inputDateFormTransaction = formTransaction.querySelector("#data");
     if (!inputTypeFormTransaction.value || !inputValueFormTransaction.value || !inputDateFormTransaction.value) {
         alert('preencha todos os campos obrigatorios!');
         return;
     }
-    let currentBalance = Number(moneyValue.textContent);
+    const convertNoFormatteMoney = removeFormatterMoney(moneyValue.textContent);
+    const currentBalance = Number(convertNoFormatteMoney);
     let valueBalance = 0;
-    let valeuTypeTransaction = inputTypeFormTransaction.value;
+    let valueTypeTransaction = inputTypeFormTransaction.value;
     const newTransaction = {
-        typeTransaction: valeuTypeTransaction,
+        typeTransaction: valueTypeTransaction,
         valueTransaction: Number(inputValueFormTransaction.value),
         dateTransaction: new Date(inputDateFormTransaction.value)
     };
@@ -35,6 +26,6 @@ formTransaction.addEventListener('submit', function (event) {
     else if (newTransaction.typeTransaction === TypeTransaction.PAGAMENTO_BOLETO) {
         valueBalance = currentBalance - Number(newTransaction.valueTransaction);
     }
-    moneyValue.textContent = valueBalance.toString();
+    moneyValue.textContent = formatterMoney(valueBalance);
     formTransaction.reset();
 });

@@ -1,4 +1,4 @@
-export function formatterDate(date, typeStyle) {
+function formatterDate(date, typeStyle) {
     const dateFormatted = new Date(date);
     if (typeStyle === 'defualt') {
         dateFormatted.toLocaleString("pt-br");
@@ -13,7 +13,12 @@ export function formatterDate(date, typeStyle) {
     }
     return dateFormatted.toString();
 }
-export function formatterMoney(value) {
+function formatterMoney(value) {
     const valueFormated = value.toLocaleString('pt-br', { currency: 'BRL', style: "currency" });
     return valueFormated.toString();
+}
+function removeFormatterMoney(valueFormatted) {
+    let removeFormatter = valueFormatted.substring(3);
+    removeFormatter = removeFormatter.replace(/^R\$ /, '').replace(/,00$/, '').replace(/\./g, '');
+    return removeFormatter;
 }

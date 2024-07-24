@@ -1,44 +1,27 @@
-// import { Transaction, TypeTransaction } from "./TypeTransaction";
-// import { moneyValue } from "./balanceComponent";
 
-interface Transaction {
-    typeTransaction: TypeTransaction,
-    valueTransaction: Number,
-    dateTransaction: Date
-  }
-  
-  //Enum
-enum TypeTransaction {
-    DEPOSITO = "Depósito",
-    TRANSFERENCIA = "Transferência",
-    PAGAMENTO_BOLETO = "Pagamento de Boleto"
-  }
-
-  
-
-const formTransaction = document.querySelector('.block-nova-transacao form') as HTMLFormElement;
-
-formTransaction.addEventListener('submit', function(event) {
-  event.preventDefault();
-
-  const moneyValue = document.querySelector('.saldo-valor .valor') as HTMLElement;
-
+  const formTransaction = document.querySelector('.block-nova-transacao form') as HTMLFormElement;
   const inputTypeFormTransaction = formTransaction.querySelector("#tipoTransacao") as HTMLSelectElement;
   const inputValueFormTransaction = formTransaction.querySelector("#valor") as HTMLInputElement;
   const inputDateFormTransaction = formTransaction.querySelector("#data") as HTMLInputElement;
+
+
+formTransaction.addEventListener('submit', function(event) {
+  event.preventDefault();
   
   if(!inputTypeFormTransaction.value || !inputValueFormTransaction.value || !inputDateFormTransaction.value) {
       alert('preencha todos os campos obrigatorios!');
       return;
   }
 
-  let currentBalance = Number(moneyValue.textContent)
+  
+  const convertNoFormatteMoney = removeFormatterMoney(moneyValue.textContent)
+  const currentBalance = Number(convertNoFormatteMoney)
   let valueBalance: number = 0
 
-  let valeuTypeTransaction: TypeTransaction = inputTypeFormTransaction.value as TypeTransaction
+  let valueTypeTransaction: TypeTransaction = inputTypeFormTransaction.value as TypeTransaction
 
   const newTransaction: Transaction = {
-      typeTransaction: valeuTypeTransaction,
+      typeTransaction: valueTypeTransaction,
       valueTransaction: Number(inputValueFormTransaction.value),
       dateTransaction: new Date(inputDateFormTransaction.value)
   }
@@ -46,6 +29,7 @@ formTransaction.addEventListener('submit', function(event) {
   
   if(newTransaction.typeTransaction === TypeTransaction.DEPOSITO) {
       valueBalance = currentBalance + Number(newTransaction.valueTransaction) 
+
   } else if (newTransaction.typeTransaction === TypeTransaction.TRANSFERENCIA) {
           valueBalance = currentBalance - Number(newTransaction.valueTransaction) 
       
@@ -54,7 +38,7 @@ formTransaction.addEventListener('submit', function(event) {
   }
 
   
-  moneyValue.textContent = valueBalance.toString()
+  moneyValue.textContent = formatterMoney(valueBalance)
 
   formTransaction.reset();
 })
