@@ -6,7 +6,7 @@ interface Transaction {
 
 //Enum
 enum TypeTransaction {
-  DEPOSITO = "Depósito",
-  TRANSFERENCIA = "Transferência",
-  PAGAMENTO_BOLETO = "Pagamento de Boleto"
+  DEPOSITO = "DEPOSITO",
+  TRANSFERENCIA = "TRANSFERENCIA",
+  PAGAMENTO_BOLETO = "PAGAMENTO_BOLETO"
 }

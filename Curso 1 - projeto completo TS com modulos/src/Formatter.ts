@@ -1,23 +1,17 @@
 type TypeStyleDate = 'defualt' | 'long'
 
 
-function formatterDate (date: Date, typeStyle: TypeStyleDate) {
-  const dateFormatted = new Date(date)
+function formatterDate (date: Date, style: TypeStyleDate) {
 
-  if (typeStyle === 'defualt') {
-    dateFormatted.toLocaleString("pt-br")
-  } else if (typeStyle === 'long') {
-    dateFormatted.toLocaleString("pt-br", 
-      {
-        weekday: "long",
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric"
-      }
-    )
+  if(style === 'defualt') {
+    const formattedDate = date.toLocaleDateString('pt-BR')
+    return formattedDate.toString()
+    
+  } else if (style === 'long') {
+    const formattedDate = date.toLocaleDateString('pt-BR',  { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' })
+    return formattedDate.toString()
+    
   }
-
-  return dateFormatted.toString()
 }
 
 

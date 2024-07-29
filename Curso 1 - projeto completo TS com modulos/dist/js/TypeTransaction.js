@@ -1,7 +1,7 @@
 //Enum
 var TypeTransaction;
 (function (TypeTransaction) {
-    TypeTransaction["DEPOSITO"] = "Dep\u00F3sito";
-    TypeTransaction["TRANSFERENCIA"] = "Transfer\u00EAncia";
-    TypeTransaction["PAGAMENTO_BOLETO"] = "Pagamento de Boleto";
+    TypeTransaction["DEPOSITO"] = "DEPOSITO";
+    TypeTransaction["TRANSFERENCIA"] = "TRANSFERENCIA";
+    TypeTransaction["PAGAMENTO_BOLETO"] = "PAGAMENTO_BOLETO";
 })(TypeTransaction || (TypeTransaction = {}));

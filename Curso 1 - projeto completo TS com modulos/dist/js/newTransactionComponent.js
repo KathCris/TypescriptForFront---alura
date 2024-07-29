@@ -19,6 +19,9 @@ formTransaction.addEventListener('submit', function (event) {
     };
     if (newTransaction.typeTransaction === TypeTransaction.DEPOSITO) {
         valueBalance = currentBalance + Number(newTransaction.valueTransaction);
+        console.log('currentBalance', currentBalance);
+        console.log('newTransaction.valueTransaction', newTransaction.valueTransaction);
+        console.log('valueBalance', valueBalance);
     }
     else if (newTransaction.typeTransaction === TypeTransaction.TRANSFERENCIA) {
         valueBalance = currentBalance - Number(newTransaction.valueTransaction);
