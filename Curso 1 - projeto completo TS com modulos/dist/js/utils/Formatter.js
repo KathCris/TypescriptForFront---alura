@@ -1,4 +1,4 @@
-function formatterDate(date, style) {
+export function formatterDate(date, style) {
     if (style === 'defualt') {
         const formattedDate = date.toLocaleDateString('pt-BR');
         return formattedDate.toString();
@@ -8,11 +8,11 @@ function formatterDate(date, style) {
         return formattedDate.toString();
     }
 }
-function formatterMoney(value) {
+export function formatterMoney(value) {
     const valueFormated = value.toLocaleString('pt-br', { currency: 'BRL', style: "currency" });
     return valueFormated.toString();
 }
-function removeFormatterMoney(valueFormatted) {
+export function removeFormatterMoney(valueFormatted) {
     let removeFormatter = valueFormatted.substring(3);
     removeFormatter = removeFormatter.replace(/^R\$ /, '').replace(/,00$/, '').replace(/\./g, '');
     return removeFormatter;

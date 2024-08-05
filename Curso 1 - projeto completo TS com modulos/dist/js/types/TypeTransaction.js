@@ -1,5 +1,5 @@
 //Enum
-var TypeTransaction;
+export var TypeTransaction;
 (function (TypeTransaction) {
     TypeTransaction["DEPOSITO"] = "DEPOSITO";
     TypeTransaction["TRANSFERENCIA"] = "TRANSFERENCIA";

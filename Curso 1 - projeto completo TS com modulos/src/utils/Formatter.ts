@@ -1,7 +1,7 @@
 type TypeStyleDate = 'defualt' | 'long'
 
 
-function formatterDate (date: Date, style: TypeStyleDate) {
+export function formatterDate (date: Date, style: TypeStyleDate) {
 
   if(style === 'defualt') {
     const formattedDate = date.toLocaleDateString('pt-BR')
@@ -15,14 +15,14 @@ function formatterDate (date: Date, style: TypeStyleDate) {
 }
 
 
-function formatterMoney  (value: number) {
+export function formatterMoney  (value: number) {
   const valueFormated = value.toLocaleString('pt-br', {currency: 'BRL', style: "currency"})
 
   return valueFormated.toString()
 }
 
 
-function removeFormatterMoney (valueFormatted: string) {
+export function removeFormatterMoney (valueFormatted: string) {
   let removeFormatter = valueFormatted.substring(3)
   removeFormatter = removeFormatter.replace(/^R\$ /, '').replace(/,00$/, '').replace(/\./g, '')
 
