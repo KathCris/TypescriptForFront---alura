@@ -11,3 +11,7 @@
 
 
 solução do erro de CORS aqui -> https://cursos.alura.com.br/forum/topico-from-origin-null-has-been-blocked-by-cors-policy-cross-origin-requests-are-only-supported-for-protocol-schemes-http-data-chrome-chrome-extension-https-101166
+
+
+
+adicionar no readme -> ter o node, typescript e npm
