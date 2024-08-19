@@ -15,3 +15,6 @@ solução do erro de CORS aqui -> https://cursos.alura.com.br/forum/topico-from-
 
 
 adicionar no readme -> ter o node, typescript e npm
+
+
+erro no calculo -> resolver!
