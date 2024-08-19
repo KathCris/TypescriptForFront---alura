@@ -6,3 +6,15 @@
 * Sempre que a transação for do tipo DEPÓSITO, o valor da transação deve ser adicionado ao saldo da conta.
 * Sempre que a transação for do tipo TRANSFERÊNCIA ou PAGAMENTO DE BOLETO, o valor da transação deve ser subtraído do saldo da conta.
 * O saldo deve sempre ser atualizado na tela da aplicação a cada transação realizada.
+
+
+
+
+solução do erro de CORS aqui -> https://cursos.alura.com.br/forum/topico-from-origin-null-has-been-blocked-by-cors-policy-cross-origin-requests-are-only-supported-for-protocol-schemes-http-data-chrome-chrome-extension-https-101166
+
+
+
+adicionar no readme -> ter o node, typescript e npm
+
+
+erro no calculo -> resolver!
